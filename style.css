@@ -1,0 +1,363 @@
+/* ---------------------------------------------
+   Tokens
+--------------------------------------------- */
+:root {
+  --paper: #e8e1d3;
+  --ink: #1a1712;
+  --ink-soft: #6b6253;
+  --rule: #c9bfa8;
+
+  --blue: #3c5a7a;
+  --red: #d6492e;
+
+  --display: "Bricolage Grotesque", sans-serif;
+  --serif: "Newsreader", Georgia, serif;
+  --mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+}
+
+[data-theme="dark"] {
+  --paper: #12110d;
+  --ink: #ece6d8;
+  --ink-soft: #8a8070;
+  --rule: #2c2820;
+
+  --blue: #7fa3c9;
+  --red: #ec6a4a;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+a { color: inherit; text-decoration: none; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------
+   Grain overlay
+--------------------------------------------- */
+#grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-size: 128px 128px;
+}
+
+/* ---------------------------------------------
+   Board
+--------------------------------------------- */
+.board {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 6vw 100px;
+}
+
+/* ---------------------------------------------
+   Hero — off-grid, layered
+--------------------------------------------- */
+.hero {
+  position: relative;
+  padding: 84px 0 30px;
+}
+
+.hero-where {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 6px 4px;
+  transform: rotate(-1deg);
+}
+
+.hero-name {
+  font-family: var(--display);
+  font-weight: 800;
+  margin: 0;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+}
+
+.hero-name .ln {
+  display: block;
+}
+
+.ln1 {
+  font-size: clamp(70px, 15vw, 200px);
+  margin-left: -2px;
+}
+
+.ln2 {
+  font-size: clamp(70px, 15vw, 200px);
+  margin-left: clamp(40px, 9vw, 150px);
+  color: var(--blue);
+  transform: rotate(-1.2deg);
+  margin-top: -0.06em;
+}
+
+.hero-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 23px);
+  color: var(--ink-soft);
+  max-width: 26ch;
+  margin: 26px 0 0 clamp(40px, 9vw, 150px);
+}
+
+/* ---------------------------------------------
+   Jump nav
+--------------------------------------------- */
+.jumps {
+  display: flex;
+  gap: 28px;
+  padding: 34px 0;
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 14px;
+  flex-wrap: wrap;
+  border-top: 2px solid var(--ink);
+}
+
+.jumps a {
+  position: relative;
+  padding: 2px 0;
+}
+
+.jumps a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.jumps a:hover::after { transform: scaleX(1); }
+
+/* ---------------------------------------------
+   Strip sections (now / more) — diagonal tag
+--------------------------------------------- */
+.strip {
+  padding: 56px 0;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.strip-tag {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--blue);
+  white-space: nowrap;
+  margin: 6px 0 0;
+  flex-shrink: 0;
+}
+
+.strip-text {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 400;
+  margin: 0;
+  max-width: 46ch;
+}
+
+.hl {
+  color: var(--red);
+  font-style: italic;
+}
+
+.strip-more {
+  border-top: 2px dashed var(--rule);
+}
+
+/* ---------------------------------------------
+   Work — heading off to the side, cards staggered
+--------------------------------------------- */
+.work {
+  padding: 30px 0 50px;
+  position: relative;
+}
+
+.work-heading {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(40px, 7vw, 84px);
+  line-height: 0.95;
+  margin: 0 0 40px;
+  color: var(--ink);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.card {
+  border: 2px solid var(--ink);
+  padding: 28px 26px;
+  position: relative;
+  background: transparent;
+}
+
+.card-status {
+  position: absolute;
+  top: -13px;
+  left: 22px;
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  color: var(--ink-soft);
+}
+
+.card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(26px, 3.2vw, 36px);
+  margin: 10px 0 14px;
+  line-height: 1.05;
+}
+
+.card p {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.card-a {
+  grid-column: 1 / 8;
+  transform: rotate(-0.4deg);
+  border-color: var(--red);
+}
+
+.card-a .card-status { color: var(--red); }
+
+.card-b {
+  grid-column: 8 / 13;
+  margin-top: 46px;
+  border-color: var(--blue);
+}
+
+.card-b .card-status { color: var(--blue); }
+
+.card-c {
+  grid-column: 3 / 11;
+  margin-top: 30px;
+  transform: rotate(0.3deg);
+}
+
+/* ---------------------------------------------
+   Contact — big, off-center
+--------------------------------------------- */
+.contact {
+  padding: 70px 0 40px;
+  border-top: 2px solid var(--ink);
+}
+
+.contact-heading {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(56px, 11vw, 130px);
+  line-height: 0.86;
+  margin: 0 0 30px;
+  color: var(--red);
+}
+
+.contact-line {
+  margin: 0 0 0 clamp(20px, 5vw, 60px);
+}
+
+.contact-email {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 32px);
+  border-bottom: 2px solid var(--blue);
+}
+
+.contact-email:hover { color: var(--blue); }
+
+.contact-links {
+  margin: 22px 0 0 clamp(20px, 5vw, 60px);
+  display: flex;
+  gap: 22px;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+.contact-links a { border-bottom: 1px solid var(--rule); }
+.contact-links a:hover { border-bottom-color: var(--ink); }
+
+/* ---------------------------------------------
+   Footer
+--------------------------------------------- */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { background: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------
+   Small screens — collapse the grid, drop rotation
+--------------------------------------------- */
+@media (max-width: 760px) {
+  .hero { padding: 56px 0 20px; }
+  .ln2 { margin-left: 24px; transform: none; }
+  .hero-line { margin-left: 24px; }
+
+  .cards { grid-template-columns: 1fr; }
+  .card-a, .card-b, .card-c {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    transform: none;
+  }
+  .card + .card { margin-top: 24px; }
+
+  .contact-line, .contact-links { margin-left: 4px; }
+}

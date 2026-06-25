@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dilshad Alam</title>
+<meta name="description" content="Dilshad Alam — developer, Kathmandu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="grain"></canvas>
+
+<div class="board">
+
+  <header class="hero">
+    <p class="hero-where">Kathmandu — open to remote work</p>
+    <h1 class="hero-name">
+      <span class="ln ln1">Dilshad</span>
+      <span class="ln ln2">Alam</span>
+    </h1>
+    <p class="hero-line">Builds small things that work.<br>Studies the rest.</p>
+  </header>
+
+  <nav class="jumps" aria-label="Section navigation">
+    <a href="#now">now</a>
+    <a href="#work">work</a>
+    <a href="#more">more</a>
+    <a href="#contact">say hi</a>
+  </nav>
+
+  <main>
+
+    <section id="now" class="strip strip-now">
+      <p class="strip-tag">— right now</p>
+      <p class="strip-text">Building <span class="hl">Tutorium</span>, an education platform — Node.js, Firebase, a frontend that's slowly getting less ugly. Also on hash tables this week in a C++ course.</p>
+    </section>
+
+    <section id="work" class="work">
+      <h2 class="work-heading">things<br>I've<br>built</h2>
+
+      <div class="cards">
+
+        <article class="card card-a">
+          <span class="card-status">in progress</span>
+          <h3>Tutorium</h3>
+          <p>An education platform for question banks, quizzes, lessons. Express + Firestore backend, plain HTML/JS frontend, KaTeX for math. Built piece by piece — auth, enrollment, a quiz engine, a video player that actually works on iOS.</p>
+        </article>
+
+        <article class="card card-b">
+          <span class="card-status">done</span>
+          <h3>Voice<br>assistant</h3>
+          <p>A Python voice assistant on the Gemini API, set to start with Windows. A second version kept conversation memory and saved transcripts to file.</p>
+        </article>
+
+        <article class="card card-c">
+          <span class="card-status">still using it</span>
+          <h3>Fee tracking<br>workbook</h3>
+          <p>An Excel system for student fees — SUMIFS-driven due/paid logic, status formatting, multi-payment aggregation. Started as a pilot for a school-management idea. Still the file I open most.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="more" class="strip strip-more">
+      <p class="strip-tag">— also around</p>
+      <p class="strip-text">C++ and data structures, some networking fundamentals, occasional NEPSE chart-watching out of curiosity more than conviction.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="contact-heading">say<br>hello</h2>
+      <p class="contact-line">
+        <a href="mailto:hello@dilshadalam.com" class="contact-email">hello@dilshadalam.com</a>
+      </p>
+      <div class="contact-links">
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span id="year"></span>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">lights off</button>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
